@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Calculator</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Animations first, then component styles -->
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ====================== MAIN LAYOUT ====================== -->
+  <div class="app-wrapper">
+
+    <!-- ====================== CALCULATOR ====================== -->
+    <div class="calculator" id="calculator">
+
+      <!-- Display -->
+      <div class="display">
+        <div class="display-label">CALC — v2.0</div>
+
+        <!-- Theme colour swatches (populated by themes.js) -->
+        <div id="theme-picker"></div>
+
+        <div class="display-expression" id="display-expr">&nbsp;</div>
+        <div class="display-main"       id="display-main">0</div>
+      </div>
+
+      <!-- Mode toggle -->
+      <div class="mode-bar">
+        <button class="mode-btn active" id="btn-basic-mode" onclick="setMode('basic')">Basic</button>
+        <button class="mode-btn"        id="btn-sci-mode"   onclick="setMode('sci')">Scientific</button>
+      </div>
+
+      <!-- Scientific panel (hidden until sci mode active) -->
+      <div class="sci-panel" id="sci-panel">
+        <button class="btn btn-sci" onclick="sciAction('sqrt')">√x</button>
+        <button class="btn btn-sci" onclick="sciAction('pow2')">x²</button>
+        <button class="btn btn-sci" onclick="sciAction('pow3')">x³</button>
+        <button class="btn btn-sci" onclick="sciAction('powN')">xⁿ</button>
+        <button class="btn btn-sci" onclick="sciAction('log')">log</button>
+        <button class="btn btn-sci" onclick="sciAction('ln')">ln</button>
+        <button class="btn btn-sci" onclick="sciAction('exp')">eˣ</button>
+        <button class="btn btn-sci" onclick="sciAction('pi')">π</button>
+        <button class="btn btn-sci" onclick="sciAction('sin')">sin</button>
+        <button class="btn btn-sci" onclick="sciAction('cos')">cos</button>
+        <button class="btn btn-sci" onclick="sciAction('tan')">tan</button>
+        <button class="btn btn-sci" onclick="sciAction('inv')">1/x</button>
+      </div>
+
+      <!-- Main button grid -->
+      <div class="buttons">
+
+        <!-- Row 1: utility -->
+        <button class="btn btn-clear"   id="btn-ac" onclick="clearAll()">AC</button>
+        <button class="btn btn-special"             onclick="toggleSign()">+/−</button>
+        <button class="btn btn-special"             onclick="percentage()">%</button>
+        <button class="btn btn-op"                  onclick="inputOp('/')">÷</button>
+
+        <!-- Row 2 -->
+        <button class="btn" onclick="inputNum('7')">7</button>
+        <button class="btn" onclick="inputNum('8')">8</button>
+        <button class="btn" onclick="inputNum('9')">9</button>
+        <button class="btn btn-op" onclick="inputOp('*')">×</button>
+
+        <!-- Row 3 -->
+        <button class="btn" onclick="inputNum('4')">4</button>
+        <button class="btn" onclick="inputNum('5')">5</button>
+        <button class="btn" onclick="inputNum('6')">6</button>
+        <button class="btn btn-op" onclick="inputOp('-')">−</button>
+
+        <!-- Row 4 -->
+        <button class="btn" onclick="inputNum('1')">1</button>
+        <button class="btn" onclick="inputNum('2')">2</button>
+        <button class="btn" onclick="inputNum('3')">3</button>
+        <button class="btn btn-op" onclick="inputOp('+')">+</button>
+
+        <!-- Row 5 -->
+        <button
+          class="btn"
+          onclick="inputNum('0')"
+          style="grid-column:span 2; aspect-ratio:auto; border-radius:14px; padding:0 24px; justify-content:flex-start;"
+        >0</button>
+        <button class="btn"        onclick="inputDecimal()">.</button>
+        <button class="btn btn-eq" onclick="calculate()">=</button>
+
+      </div>
+
+      <!-- Keyboard hint bar -->
+      <div class="kb-hint">
+        <p class="kb-hint-text">
+          <span class="kb-active-dot"></span>
+          Keyboard <strong>active</strong> &nbsp;·&nbsp;
+          Enter = Calc &nbsp;·&nbsp; Esc = Clear &nbsp;·&nbsp; ⌫ = Delete
+        </p>
+      </div>
+
+    </div>
+    <!-- /calculator -->
+
+    <!-- ====================== HISTORY PANEL ====================== -->
+    <div class="history-panel">
+      <div class="history-header">
+        <div class="history-title">History</div>
+        <button class="history-clear-btn" onclick="clearHistory()">Clear all</button>
+      </div>
+      <div class="history-list" id="history-list">
+        <div class="history-empty">No calculations yet.<br>Results appear here.</div>
+      </div>
+    </div>
+    <!-- /history-panel -->
+
+  </div>
+  <!-- /app-wrapper -->
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="site-footer">
+    <p>Developed by <span class="credit-name">Logos</span></p>
+  </footer>
+
+  <!-- Scripts: storage → themes → app logic -->
+  <script src="storage.js"></script>
+  <script src="themes.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
