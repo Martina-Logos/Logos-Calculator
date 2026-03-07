@@ -25,13 +25,30 @@
 
       <!-- Display -->
       <div class="display">
-        <div class="display-label">CALC — v2.0</div>
 
-        <!-- Theme colour swatches (populated by themes.js) -->
-        <div id="theme-picker"></div>
+        <!-- Controls: toggle + palette together, top-left -->
+        <div class="display-controls">
+          <div class="mode-toggle" id="mode-toggle" onclick="toggleDarkLight()" title="Toggle light/dark mode">
+            <div class="mode-toggle-track">
+              <span class="mode-icon moon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              </span>
+              <span class="mode-icon sun">
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <div class="mode-toggle-thumb"></div>
+            </div>
+          </div>
+          <!-- Palette icon sits immediately right of toggle -->
+          <div id="theme-picker"></div>
+        </div>
 
-        <div class="display-expression" id="display-expr">&nbsp;</div>
-        <div class="display-main"       id="display-main">0</div>
+        <!-- Digits: centered, never pushed right -->
+        <div class="display-numbers">
+          <div class="display-expression" id="display-expr">&nbsp;</div>
+          <div class="display-main"       id="display-main">0</div>
+        </div>
+
       </div>
 
       <!-- Mode toggle -->

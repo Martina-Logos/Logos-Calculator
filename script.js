@@ -40,9 +40,9 @@ function init() {
 function updateDisplay(val, expr) {
   const len = String(val).length;
   displayMain.style.fontSize =
-    len > 14 ? '20px' :
-    len > 10 ? '28px' :
-    len > 7  ? '36px' : '44px';
+    len > 14 ? '18px' :
+    len > 10 ? '26px' :
+    len > 7  ? '34px' : '48px';
   displayMain.textContent = val;
   displayExpr.textContent = expr || '\u00a0';
 }
